@@ -12,11 +12,11 @@ class App extends Component {
     this.aumentar = this.aumentar.bind(this);
     this.diminuir = this.diminuir.bind(this);
   }
-
+  
   aumentar() {
     let state = this.state;
     state.contador += 1
-    this.setState(state)
+    this.setState(state) //Exemplo de modificão do state
   }
 
   diminuir() {
@@ -26,7 +26,7 @@ class App extends Component {
       return;
     }
     state.contador -= 1
-    this.setState(state)
+    this.setState(state) //Exemplo de modificão do state
   }
 
 
