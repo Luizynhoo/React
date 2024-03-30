@@ -1,0 +1,29 @@
+Como Utilizar a States
+
+"state" refere-se a um objeto que contém dados relevantes para um componente. 
+O estado permite que os componentes do React sejam dinâmicos e interativos.
+
+Como usar:
+estrutura - 
+
+  constructor(props){
+    super(props);
+    this.state={}
+  }
+
+
+  Como modificar ?
+  Utilizando o 'setState()'
+
+  ////////////////////////////////////////////////////////////////////
+  Ciclos de vida
+
+  //Componente que retorna um True ou False
+  shouldComponentUpdate
+
+
+  //Componente que roda só uma vez (Assim que é montado na tela)
+  componentDidMount
+
+  //Toda vez que é utilizado uma state ele pode fazer algo
+  componentDidUpdate
