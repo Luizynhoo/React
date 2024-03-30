@@ -1,9 +1,0 @@
-Como começar -
-
-Instalar o Node JS 
-criar uma pasta 
-abri-la no cmd e digitar - npx create-react-app "nome do projeto"
-(nome não pode ter acento ou qualquer caracteres especiais)
-Acesse pelo cmd 
-cd "nome do projeto"
-npm start
