@@ -1,0 +1,38 @@
+import React, { Component } from "react";
+
+class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      hora: '00:00:00' //Criando a state
+    }
+  }
+
+  //Componente que roda só uma vez (Assim que é montado na tela)
+  componentDidMount(){
+
+      setInterval(() =>{
+        this.setState({ hora: new Date().toLocaleTimeString() })
+      }, 1000);
+  }
+  //Toda vez que é utilizado uma state ele pode fazer algo
+  componentDidUpdate(){
+    console.log('Atualizou!!');
+  }
+  
+    //Componente que retorna um True ou False
+  // shouldComponentUpdate(){
+
+  // }
+
+  render(){
+    return(
+      <div>
+        <h1>Meu Projeto {this.state.hora}</h1> {/*Utilizando a state*/}
+      </div>
+    );
+  }
+}
+
+export default App
