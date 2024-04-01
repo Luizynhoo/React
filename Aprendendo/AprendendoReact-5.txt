@@ -1,0 +1,11 @@
+Divisão de componentes
+
+1- Criar uma pasta "componentes" dentro do src
+2- Criar pasta com o nome do componente
+3- Criar um arquivo index.js nele
+4- Criar o componentes (criação padrão)
+Mudar as coisas de acordo com o nome do componente
+5- Exportalo ex:
+export default "nome do componente";
+6- Importar na raiz, ex:
+import "nome do componente" from "./componentes/Membro";
