@@ -1,0 +1,16 @@
+Trabalhando com listas
+
+Criar um feed do instagram
+
+Criando uma state = feed 
+Criando objetos dentro dela = id, username, curtidas e comentarios
+
+Utilizando map pra buscar todos nossos objetos dentro da state (feed)
+Map = função 
+
+Sempre criar uma key para os seus objetos, para poder alterar e facilitar a sua vida
+
+Criando uma pasta componentes para orgnizar o código e deixa-lo mais limpo
+
+? =  então 
+: = se não 
