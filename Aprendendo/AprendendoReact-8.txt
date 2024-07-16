@@ -1,4 +1,4 @@
-Manipulando Formularios 
+Manipulando Formularios PT1
 
 
 onChange = Quando sofrer mudanças ele faz alguma coisa (chamar função ou alterar o valor da state)
@@ -7,6 +7,17 @@ Nesse caso criei uma função TrocaEmail, onde nela tem um evento
 target para puxar o input correto 
 
 No email e no sexo usei uma função externa e na senha irei usar uma função anônima diretamente no input
+
+/////////////////////////////////////////////////////////////////////
+Manipulando Formularios PT2
+
+
+Diminuimos bem codigo e deixamos mais organizados
+Adicionamos mais um input (nome)
+Para organizar criamos uma unica função para todos os input para uma fácil manuntenção
+
+E também foi criado um objeto (form) onde tinha todos os names dos nossos input, para deixar mais organizado e para fácil manuntenção também
+
 
 ////////////////////////////////////////////////////////////////
 
