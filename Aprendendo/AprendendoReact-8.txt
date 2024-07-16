@@ -7,3 +7,22 @@ Nesse caso criei uma função TrocaEmail, onde nela tem um evento
 target para puxar o input correto 
 
 No email e no sexo usei uma função externa e na senha irei usar uma função anônima diretamente no input
+
+////////////////////////////////////////////////////////////////
+
+Continuando a Aula sobre Formularios
+
+
+Objetivo montar um formulário onde tenha os campos principais e tenha alerta de cadastro realizado com sucesso 
+e tenha verificação nos campos em vazio
+
+
+Diferente dos outros eu utilizei a função anônima para todos os campos
+
+No botão criei a função dele direto no forms com o (OnSubmit) e dentro dele criei uma função externa
+
+\n = quebrar linha
+
+e.preventDefault(); = faz não atualizar a pagina após o envio do formulário
+
+ {this.state.error && <p>{this.state.error}</p>} = utilizando o erro dentro do "corpo"
