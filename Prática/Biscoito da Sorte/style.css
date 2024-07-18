@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    width: 300px;
+    height: 300px;
+    margin-top: 50px;
+}
+
+.frases{
+    font-style: italic;
+    color: #dd7b22;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.btn{
+    cursor: pointer;
+    background-color: #dd7b22;
+    border-radius: 5px;
+    border: 1px solid #a1a19b ;
+    color: #ecebeb;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.btn:hover,
+.btn:active {
+    background-color: #f77d0b;
+}
+
