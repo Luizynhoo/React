@@ -1,0 +1,18 @@
+Projeto Biscoito 
+
+
+Mini projeto do biscoito da sorte 
+
+Objetivo - Sempre que clicarmos no biscoito gerar uma frase aleatória.
+
+
+1- Adicionar a imagem
+2- Criando um componente chamado Botao
+3- Criar a sua função na pasta de componentes e exporta-la
+4- Criar a area das frases e assim criar um objeto onde armazene as frases 
+5- Neste momento irei começar a estilizar 
+   ## Utilizar className invés de class ##
+6- Fazer e testar funcionamento do botão com aleart 
+7- Criar state frases e vincular com o H3
+8- Fazer o botão buscar aleatóriamente as frases para aparecer na tela
+
