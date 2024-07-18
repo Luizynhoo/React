@@ -1,0 +1,16 @@
+Projeto Cronômetro
+
+Mini projeto Cronômetro
+
+Objetivo - Cronômetro funcionar, ter dois botões onde um começa a cronometragem e outro para.
+
+1- Estruturar o corpo, adicionar a imagem, textos e botões
+2- Estilizar tudo 
+3- Tranformar o timer em um state
+4- Fixar quantas casas decimais eu quero que apareça no cronômetro
+5- Criar os eventos dos botões (Go - LIMPAR)
+6- Criar uma variavel para armazenar o crometro e deixar ela como NULL
+7- Fazer com que o botão GO funcione
+8- Criar um if else para que o cronômetro também pare
+9- Criar uma state para o botão go, para com que ele altere quando estiver rodando ele vire "PARAR" e quando estiver zerado volte para "GO"
+10- Funcionamento do botão LIMPAR
