@@ -1,0 +1,35 @@
+import React, { useState }from 'react';
+
+function App() {
+
+  // nova forma de criar states [state, atualização da state]
+  const [tarefas, setTarefas] = useState ([
+    'Pagar a conta de luz',
+    'Estudar Hooks no React'
+  ]);
+
+  const [input, setInput] = useState([
+
+  ])
+
+  // Criando função do botão
+  function handleadd(){
+    setTarefas([...tarefas, input])
+    setInput('');
+  }
+
+  return (
+    <div>
+      <ul>
+        {tarefas.map(tarefa =>(
+          <li key={tarefa}>{tarefa}</li>
+        ))}
+      </ul>
+
+      <input type='text' value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <button type='button' onClick={handleadd}>Adicionar tarefa</button>
+    </div>
+  )
+}
+
+export default App;
