@@ -1,0 +1,13 @@
+Hooks - API
+
+Com a api de hooks não é necessário mas a utilização das states
+
+Agora utilizamos o useState
+Ex: 
+
+  const [tarefas, setTarefas] = useState ([
+    'Pagar a conta de luz',
+    'Estudar Hooks no React'
+  ])
+
+Pegar exemplo no Aprendendo_Hooks
