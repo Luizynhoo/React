@@ -1,0 +1,47 @@
+import React, { useState, useEffect }from 'react';
+
+function App() {
+
+  // nova forma de criar states [state, atualização da state]
+  const [tarefas, setTarefas] = useState ([]);
+  const [input, setInput] = useState('');
+
+
+  //Buscando a tarefa no local storage e mudando o valor da state para o que esta armazenado
+  useEffect(() => {
+    const tarefasStorage = localStorage.getItem('tarefas')
+
+    if(tarefasStorage){
+      setTarefas(JSON.parse(tarefasStorage));
+    }
+
+  }, []);
+
+  // Toda vez que a state tarefas sofrer alteração ela vai chamar essa função
+  // Uma função onde armazena no localStorage tudo que estiver em tarefas
+  useEffect(() => {
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }, [tarefas]);
+
+
+  // Criando função do botão
+  function handleadd(){
+    setTarefas([...tarefas, input])
+    setInput('');
+  }
+
+  return (
+    <div>
+      <ul>
+        {tarefas.map(tarefa =>(
+          <li key={tarefa}>{tarefa}</li>
+        ))}
+      </ul>
+
+      <input type='text' value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <button type='button' onClick={handleadd}>Adicionar tarefa</button>
+    </div>
+  )
+}
+
+export default App;
