@@ -1,0 +1,10 @@
+Hooks
+
+useEffect - substitue todos os ciclos de vida, nos componentes.
+
+Ele pode receber dois parâmetros
+A função que vai ser executada e a state que ele está monitorando
+
+Estrutura :
+
+useEffect((Oque ela vai fazer) => {}, [stateMonitorada])
