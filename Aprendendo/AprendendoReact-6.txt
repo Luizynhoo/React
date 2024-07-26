@@ -1,3 +1,0 @@
-Renderização Condicional
-
-Quando você quer renderizar uma coisa ou outra dentro do seu componente
