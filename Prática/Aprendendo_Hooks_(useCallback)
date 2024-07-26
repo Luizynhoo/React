@@ -1,0 +1,60 @@
+import React, { useState, useEffect, useMemo, useCallback}from 'react';
+
+function App() {
+
+  // nova forma de criar states [state, atualização da state]
+  const [tarefas, setTarefas] = useState ([]);
+  const [input, setInput] = useState('');
+
+
+  //Buscando a tarefa no local storage e mudando o valor da state para o que esta armazenado
+  useEffect(() => {
+    const tarefasStorage = localStorage.getItem('tarefas')
+
+    if(tarefasStorage){
+      setTarefas(JSON.parse(tarefasStorage));
+    }
+
+  }, []);
+
+  // Toda vez que a state tarefas sofrer alteração ela vai chamar essa função
+  // Uma função onde armazena no localStorage tudo que estiver em tarefas
+  useEffect(() => {
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }, [tarefas]);
+
+
+  // Criando função do botão, com o useCallback que impende a renderização desnecessária da função várias vezes
+  // Fazendo a função ser chamada só quando é necessário
+  const handleadd = useCallback(() => {
+    setTarefas([...tarefas, input])
+    setInput('');
+  }, [input, tarefas]);
+
+  //Ao clicar no botão ele limpa todas as tarefas e apaga tudo do localStorage
+  const limpar = useCallback(() =>{
+    setTarefas([])
+    localStorage.removeItem('tarefas')
+  }, [])
+
+  //Uso do useMemo, toda vez que alterar a state tarefas ativa a função totalTarefas
+  const totalTarefas = useMemo(() => tarefas.length, [tarefas])
+
+  return (
+    <div>
+      <ul>
+        {tarefas.map(tarefa =>(
+          <li key={tarefa}>{tarefa}</li>
+        ))}
+      </ul>
+      <br/>
+      <strong>Você tem {totalTarefas} tarefas pendentes!</strong>
+      <br/>
+      <input type='text' value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <button type='button' onClick={handleadd}>Adicionar tarefa</button>
+      <button type='button' onClick={limpar}>Limpar</button>
+    </div>
+  )
+}
+
+export default App;
