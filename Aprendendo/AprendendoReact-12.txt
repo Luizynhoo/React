@@ -8,3 +8,15 @@ A função que vai ser executada e a state que ele está monitorando
 Estrutura :
 
 useEffect((Oque ela vai fazer) => {}, [stateMonitorada])
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+useMemo - basicamente para não ter renderizaçoes desnecessárias, usado quando você quer fazer um calculo que usa o valor de alguma state, (basicamente memorizar algo)
+
+Estrutura :
+
+const função que deseja = useMemo(() => stateQueDeseja.length, [state])
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+useCallback - Parecido com o useMemo, porém com ele eu posso trabalhar com funções mais complexas
