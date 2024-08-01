@@ -1,0 +1,5 @@
+Requisições HTTP
+
+API que vou utilizar na aula - https://sujeitoprogramador.com/rn-api/?api=posts
+
+Usando fetch() para fazer requisições HTTP
