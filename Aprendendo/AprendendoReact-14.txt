@@ -1,0 +1,41 @@
+Trabalhando com rotas 
+
+Instalando essa biblioteca
+npm i react-router-dom
+
+O react-router-dom é uma biblioteca que facilita a navegação e o gerenciamento de rotas em aplicações React
+
+Criando uma pasta chamada pages, para ficar as páginas criadas
+Home 
+Sobre
+
+Criando arquivo 'routes' para as rotas das páginas
+Dentro dele importamos algumas coisas da biblioteca react-router-dom
+E importamos as páginas
+
+Estrutura das rotas :
+
+    function RoutesApp(){
+    return(
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={ <Home/> }/>
+                <Route path='/Sobre' element={ <Sobre/> }/>
+            </Routes>
+        </BrowserRouter>
+    )
+}
+
+
+BrowserRouter: Envolve a aplicação e permite o uso da API do React Router.
+Routes: É um contêiner para um conjunto de rotas (Route). Ele renderiza a primeira Route ou Redirect que corresponder à localização atual.
+Route: Define uma rota no aplicativo. Utiliza a prop path para especificar a URL e renderiza o componente correspondente.
+path: Quando o usuário navega para a raiz da aplicação (/), o componente Home será renderizado.
+
+Depois só importa-la para o app.js
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Para facilitar a navegação dentro das paginas, pela biblioteca importamos o Link 
+
+Exemplo de utilização:
+<Link to={"/Sobre"}>Sobre</Link>
