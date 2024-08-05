@@ -5,6 +5,8 @@ npm i react-router-dom
 
 O react-router-dom é uma biblioteca que facilita a navegação e o gerenciamento de rotas em aplicações React
 
+VOU UTILIZAR MUITO
+
 Criando uma pasta chamada pages, para ficar as páginas criadas
 Home 
 Sobre
@@ -39,3 +41,42 @@ Para facilitar a navegação dentro das paginas, pela biblioteca importamos o Li
 
 Exemplo de utilização:
 <Link to={"/Sobre"}>Sobre</Link>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Melhorando nossas rotas
+
+
+Melhorando as nossa páginas
+criando componente Header e estilizando
+
+<></> = fragmento, uma div onde não tem nenhuma alteração visual (utilizei no app.js)
+
+  return (
+    <>
+    <RoutesApp/>
+    </>
+  );
+
+Obs: O componente Link no css vira a tag ancora 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Criando uma rota Not Found 
+
+Criar como se fosse uma página normal, porém vc muda o path na hora de criar uma rota pra ele
+colocando no path "*" o react já entende que é uma página de Not Found
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Criando parâmetros dinâmicos
+
+
+Criar como se fosse uma página normal, porém vc muda o path na hora de criar uma rota pra ele
+<Route path='/Produto/:id' element={ <Produto/> }/>
+
+Além disso usando (importando) o useParams
+
+O useParams do React Router é um hook que permite acessar os parâmetros da URL em um componente funcional no React. 
+Isso é útil quando você precisa extrair partes da URL que foram definidas como parâmetros dinâmicos em suas rotas.
+
+ex: MelhorandoRotas   Arquivo: pages/Produto/index.js
