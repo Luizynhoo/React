@@ -1,1 +1,42 @@
 ContextAPI
+
+ContextAPI
+
+Uma maneira de compartilhar dados, states ou dados entre componentes sem a necessidade de camadas
+Transformando em estados globais, trazendo mais facilidade. 
+
+
+Utilizar só quando tiver a necessidade de usar algum estado em global por exemplo em login, e-commerce
+
+Sempre importar o ("useContext" from react) para a utilização desse formato
+
+
+
+children = tudo que a dentro de uma propriedade 
+ex:
+
+APP.js
+
+function app(){
+    return(
+        <div>
+            <titulo>
+                //Tudo que esta dentro daqui seria um children (um "filho")
+                <h1> Novo titulo <h1/>
+            <titulo/>   
+        <div/>
+    )
+}
+
+function titulo( {children} ){
+    return(
+        {children}
+    )
+}
+
+export default app;
+
+
+Visão do ContextAPI:
+
+https://img-c.udemycdn.com/redactor/raw/article_lecture/2021-03-22_20-19-37-43067882031400e4843c4fded708e75c.png
