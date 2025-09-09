@@ -1,0 +1,23 @@
+import { useFormStatus } from 'react-dom'
+
+export function ButtonSubmit(){
+
+    // 🔹 useFormStatus é um hook do React que só pode ser usado
+    // dentro de componentes que estão dentro de um <form>.
+    // Ele retorna o estado atual do formulário, por exemplo:
+    // - pending: true → quando o formulário está sendo enviado (em submissão)
+    // - pending: false → quando não há envio em andamento
+    //
+    // Isso é útil para:
+    // ✅ Desabilitar botões enquanto o form é enviado
+    // ✅ Mostrar mensagens de "Carregando..." ou "Enviando..."
+    // ✅ Evitar envios duplicados
+
+    const { pending } = useFormStatus();
+
+    return(
+        <button type="submit" disabled={pending}>
+            {pending ? "Cadastrando dados..." : "Cadastrar"}
+        </button>
+    )
+}
