@@ -1,57 +1,48 @@
-import "./app.css";
-
-//Uma maneira melhor de criar um formulário
-import { useState } from "react";
-import { NewUser } from './Transition'
-import { ButtonSubmit } from "./Button";
+import './app.css';
+import { useActionState } from "react"
 
 function App() {
 
-  const [message, setMessage] = useState("")
+  async function handleSubmite(prevState, formData) {
 
-  //formData é chamado pelo action do form
-  async function handleRegister(formData) {
-
-    //Fake dalay
-    await new Promise(resolve => setTimeout(resolve, 2500))
+    await new Promise((resolve) => setTimeout(() => resolve(), 2500))
 
     const nome = formData.get("nome")
-    const tarefa = formData.get("tarefa")
 
-    console.log(nome)
-    console.log(tarefa)
+    console.log(prevState);
 
-    //Exibindo os componentes na tela
-    setMessage("Bem vindo, " + nome + ", sua próxima tarefa será : " + tarefa)
+    //começando a usar o ternário
+    return nome.length < 4
+      ? { text: "Nome inválido" }
+      : { text: `Bem vindo ${nome}` }
   }
 
+  //função sempre acima do hook
+  const [message, formAction, pending] = useActionState(handleSubmite, { text: "Se cadastre.." })
+
   return (
-    <div className="forms-container">
-      <h1>Form + Action</h1>
+    <div>
+      <h1>useActionState</h1>
 
-      <form action={handleRegister}>
+      <form action={formAction}>
+
         <input
           type="text"
-          name="nome"
           placeholder="Digite o seu nome"
+          name="nome"
           required
         />
 
-        <input
-          type="text"
-          name="tarefa"
-          placeholder="Digite qual será a sua proxima tarefa"
-          required
-        />
+        <button type="submit" disabled={pending}>
+          {pending ? "Cadastrando.." : "Cadastrar"}
+        </button>
 
-        <ButtonSubmit/>
       </form>
 
-      {/* Mensagem na tela  */}
-      <h2>{message}</h2>
+      {message && <h1>{message.text}</h1>}
 
-      <NewUser/>
     </div>
+
   )
 }
 
