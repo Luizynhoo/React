@@ -1,66 +1,50 @@
-import { useRef } from 'react'
 import './App.css'
 import { Header } from './components/Header';
 import { Button } from "./components/Button";
+import { useForm } from 'react-hook-form';
+
 
 
 function App() {
-  const nameRef = useRef(null)
-  const emailRef = useRef(null)
-  const userRef = useRef(null)
-  const descriptionRef = useRef(null)
+  const { register, handleSubmit } = useForm()
 
-  function handleSave(e) {
-    e.preventDefault();
-
-    console.log({
-      name: nameRef.current?.value,
-      name: emailRef.current?.value,
-      name: userRef.current?.value,
-      name: descriptionRef.current?.value,
-    })
+  function handleSave(data){
+    console.log(data);
   }
 
 
   return (
     <div className="container">
       <h1>React</h1>
-      <Header />
+      <Header/>
 
-      <form className="form" onSubmit={handleSave}>
+      <form className="form" onSubmit={handleSubmit(handleSave)}>
 
         <input
           type="text"
           placeholder="Digite seu nome..."
           className="input"
-          ref={nameRef}
+          {...register("name", { required: true } )}
+          id="name"
         />
 
         <input
           type="text"
           placeholder="Digite seu email..."
           className="input"
-          ref={emailRef}
+          {...register("email", { required: true } )}
+          id="email"
         />
 
         <input
           type="text"
           placeholder="Digite seu username..."
           className="input"
-          ref={userRef}
+          {...register("username", { required: true, maxLength: 5 } )}
+          id="username"
         />
 
-        <textarea
-          type="text"
-          placeholder="Digite sua descriçao..."
-          className="input"
-          ref={descriptionRef}
-        ></textarea>
-
-
-        <Button type="submit" onClick={handleSave}>
-          Enviar
-        </Button>
+        <Button className="button" type="submit">Enviar</Button>
       </form>
     </div>
   )
