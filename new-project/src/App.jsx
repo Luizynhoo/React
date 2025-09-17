@@ -1,48 +1,68 @@
-import './app.css';
-import { useActionState } from "react"
+import { useRef } from 'react'
+import './App.css'
+import { Header } from './components/Header';
+import { Button } from "./components/Button";
+
 
 function App() {
+  const nameRef = useRef(null)
+  const emailRef = useRef(null)
+  const userRef = useRef(null)
+  const descriptionRef = useRef(null)
 
-  async function handleSubmite(prevState, formData) {
+  function handleSave(e) {
+    e.preventDefault();
 
-    await new Promise((resolve) => setTimeout(() => resolve(), 2500))
-
-    const nome = formData.get("nome")
-
-    console.log(prevState);
-
-    //começando a usar o ternário
-    return nome.length < 4
-      ? { text: "Nome inválido" }
-      : { text: `Bem vindo ${nome}` }
+    console.log({
+      name: nameRef.current?.value,
+      name: emailRef.current?.value,
+      name: userRef.current?.value,
+      name: descriptionRef.current?.value,
+    })
   }
 
-  //função sempre acima do hook
-  const [message, formAction, pending] = useActionState(handleSubmite, { text: "Se cadastre.." })
 
   return (
-    <div>
-      <h1>useActionState</h1>
+    <div className="container">
+      <h1>React</h1>
+      <Header />
 
-      <form action={formAction}>
+      <form className="form" onSubmit={handleSave}>
 
         <input
           type="text"
-          placeholder="Digite o seu nome"
-          name="nome"
-          required
+          placeholder="Digite seu nome..."
+          className="input"
+          ref={nameRef}
         />
 
-        <button type="submit" disabled={pending}>
-          {pending ? "Cadastrando.." : "Cadastrar"}
-        </button>
+        <input
+          type="text"
+          placeholder="Digite seu email..."
+          className="input"
+          ref={emailRef}
+        />
 
+        <input
+          type="text"
+          placeholder="Digite seu username..."
+          className="input"
+          ref={userRef}
+        />
+
+        <textarea
+          type="text"
+          placeholder="Digite sua descriçao..."
+          className="input"
+          ref={descriptionRef}
+        ></textarea>
+
+
+        <Button type="submit" onClick={handleSave}>
+          Enviar
+        </Button>
       </form>
-
-      {message && <h1>{message.text}</h1>}
-
     </div>
-
   )
 }
 
