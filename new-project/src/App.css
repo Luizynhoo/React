@@ -38,3 +38,7 @@
   align-self: flex-start;
   margin-bottom: 10px;
 }
+
+input{
+  margin-bottom: 20px;
+}

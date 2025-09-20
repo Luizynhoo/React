@@ -1,101 +1,31 @@
+import { useState } from 'react';
 import './App.css'
-import styles from './styles/button.module.css'
 import { Header } from './components/Header';
 
-import { useForm } from 'react-hook-form'
-import { email, z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod'
 
-
-/*Validações*/
-const schema = z.object({
-  name: z
-    .string()
-    .nonempty("O nome é obrigatório.")
-    .min(2, "O nome deve ter no mínimo 2 caracteres.")
-    .regex(/^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/, "O nome deve conter apenas letras."),
-
-  email: z
-    .string()
-    .nonempty("O e-mail é obrigatório.")
-    .email("Digite um e-mail válido."),
-
-  username: z
-    .string()
-    .nonempty("O username é obrigatório.")
-    .min(3, "O username deve ter no mínimo 3 caracteres.")
-    .max(15, "O username deve ter no máximo 15 caracteres.")
-    .regex(/^[A-Za-z0-9_]+$/, "O username deve conter apenas letras, números e underline.")
-    .regex(/[A-Z]/, "O username deve ter pelo menos uma letra maiúscula."),
-
-  telefone: z
-    .string()
-    .regex(/^\d{2} ?\d{9}$/, "Digite um telefone valido, DD + numeros."),
-
-})
 
 function App() {
-  const { register, handleSubmit, formState: { isSubmitting, errors } } = useForm({
-    resolver: zodResolver(schema)
-  });
-
-  function handleSave(data) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(data);
-        resolve();
-      }, 2000);
-    });
-  }
-
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
 
   return (
     <div className="container">
-      <h1>React</h1>
-      <Header />
+      <Header name={name} />
 
-      <form className="form" onSubmit={handleSubmit(handleSave)}>
+      <p>Name:</p>
+      <input
+        type="text"
+        placeholder='Digite o seu nome'
+        onChange={(e) => setName(e.target.value)}
+      />
 
-        <input
-          type="text"
-          placeholder="Digite seu nome..."
-          className="input"
-          {...register("name")}
-          id="name"
-        />
-        {errors.name && <p className='error'>{errors.name.message}</p>}
+      <p>Email:</p>
+      <input
+        type="text"
+        placeholder='Digite o seu email'
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-        <input
-          type="text"
-          placeholder="Digite seu email..."
-          className="input"
-          {...register("email")}
-          id="email"
-        />
-        {errors.email && <p className='error'>{errors.email.message}</p>}
-
-        <input
-          type="text"
-          placeholder="Digite seu username..."
-          className="input"
-          {...register("username")}
-          id="username"
-        />
-        {errors.username && <p className='error'>{errors.username.message}</p>}
-
-        <input
-          type="text"
-          placeholder="Digite seu telefone..."
-          className="input"
-          {...register("telefone")}
-          id="telefone"
-        />
-        {errors.telefone && <p className='error'>{errors.telefone.message}</p>}
-
-        <button className={styles.button} type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Enviando..." : "Enviar"}
-        </button>
-      </form>
     </div>
   )
 }
