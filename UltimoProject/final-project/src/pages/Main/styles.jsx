@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes, css} from "styled-components";
 
 export const Container = styled.div`
     max-width: 700px;
@@ -31,10 +31,24 @@ export const Form = styled.form`
         padding: 10px 15px;
         border-radius: 4px;
         font-size: 16px;
+        color: #0D1117;
     }
     `;
 
-export const SubmitButton = styled.button`
+    //animação de loading
+    const rotate = keyframes`
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    `;
+
+export const SubmitButton = styled.button.attrs( props => ({
+    type: 'submit',
+    disabled: props.Loading,
+}))`
     background: #0D1117;
     border: 0;
     border-radius: 4px;
@@ -48,5 +62,62 @@ export const SubmitButton = styled.button`
     &:hover{
         background: #161b22;
     }
+
+    &[disabled]{
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    ${ props => props.Loading && 
+    css `
+        svg{
+            animation: ${rotate} 2s linear infinite;
+        }
+    `
+    
+    }
     `;
 
+
+export const List = styled.ul`
+    list-style: none;
+    margin-top: 20px;
+
+    li{
+        padding: 15px ;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 4px;
+
+        &:nth-child(odd) {
+            background-color: transparent; 
+        }
+
+        &:nth-child(even) {
+            background-color: #0D1117;
+        }
+
+        a{
+            color: #C9D1D9;
+            text-decoration: none;
+        }
+    }
+    
+    
+    `;
+
+
+export const DeleteButton = styled.button.attrs({
+    type: 'button',
+})`
+    background: transparent;
+    color: #C9D1D9;
+    border: 0;
+    padding: 8px 7px;
+    outline: 0;
+    border-radius: 4px;
+    cursor: pointer;
+
+`;
