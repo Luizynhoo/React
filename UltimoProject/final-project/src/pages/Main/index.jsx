@@ -1,27 +1,43 @@
-import React, { useState, useCallback, use } from "react";
+import React, { useState, useCallback, useEffect, use } from "react";
 import { FaGithub, FaPlus, FaSpinner, FaLink, FaTrash } from "react-icons/fa"
 import { Container, Form, SubmitButton, List, DeleteButton } from "./styles";
+import { Link } from "react-router-dom";
 
 import { getRepository } from "../../services/githubService";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export default function Main() {
 
     const [NewRepository, setNewRepository] = useState('');
-    const [Repository, setRepository] = useState([]);
+    const [Repository, setRepository] = useLocalStorage('repositories', []);
     const [Loading, setLoading] = useState(false);
+    const [alert, setAlert] = useState(null);
 
     const handleSubmit = useCallback(async (e) => {
         e.preventDefault();
 
         try {
-
             setLoading(true);
+            setAlert(null);
 
+            //verifica se o repositorio ja existe
+            const hasRepo = Repository.find(
+                (repository) => repository.name.toLowerCase() === NewRepository.toLowerCase()
+            );
+            if (hasRepo) {
+                throw new Error("Repositório duplicado");
+            }
+
+            //Busca o repositorio na api
             const data = await getRepository(NewRepository);
+
+            //adiciona o novo repositorio na lista
             setRepository([...Repository, data]);
             setNewRepository('');
+
         } catch (error) {
-            alert(error.message);
+            setAlert(true);
+            console.log(error.message);
 
         } finally {
             setLoading(false);
@@ -32,6 +48,7 @@ export default function Main() {
 
     function handleinputChange(e) {
         setNewRepository(e.target.value);
+        setAlert(null);
     }
 
     const handleDelete = useCallback((repo) => {
@@ -48,7 +65,7 @@ export default function Main() {
             </h1>
 
 
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} error={alert} >
                 <input
                     type="text"
                     placeholder="Adicionar Repositorio"
@@ -56,7 +73,7 @@ export default function Main() {
                     onChange={handleinputChange}
                 />
 
-                <SubmitButton Loading= {Loading ? 1 : 0}>
+                <SubmitButton Loading={Loading ? 1 : 0}>
                     {
                         Loading ? (
                             <FaSpinner color="#FFF" size={14} />
@@ -71,16 +88,16 @@ export default function Main() {
                 {Repository.map(repo => (
                     <li key={repo.name}>
                         <span>
-                            <DeleteButton onClick = {() => handleDelete(repo.name)}>
+                            <DeleteButton onClick={() => handleDelete(repo.name)}>
                                 <FaTrash size={14} />
                             </DeleteButton>
 
                             {repo.name}
                         </span>
-
-                        <a href="">
+                        {/* falando para url que o item é um parametro e não uma nova pasta */}
+                        <Link to={`/repositorio/${encodeURIComponent(repo.name)}`}>
                             <FaLink size={20} />
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </List>

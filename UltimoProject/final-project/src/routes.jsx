@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import React from 'react';
 
 import Main from './pages/Main';
 import Repositorio from './pages/Repositorio';
@@ -9,7 +8,7 @@ export default function AppRoutes() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Main />} />
-                <Route path="/repositorio" element={<Repositorio />} />
+                <Route path="/repositorio/:repositorio" element={<Repositorio />} />
             </Routes>
         </BrowserRouter>
     )
