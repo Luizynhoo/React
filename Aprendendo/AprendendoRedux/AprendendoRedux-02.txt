@@ -1,0 +1,5 @@
+Como iniciar o Redux no react 
+
+Comando:
+
+npm i redux react-redux @reduxjs/toolkit

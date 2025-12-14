@@ -1,0 +1,52 @@
+Com as minhas palavras sobre Redux:
+https://redux.js.org/
+
+Uma biblioteca JS separada do react
+
+Funcionamento :
+
+- Controle de estados globais
+ -- Estados que é utilizado mais de uma vez, tendo mais do que 1 dono 
+ -- Estado que é manipulado por mais de um componente 
+ -- Ações pelo usuario em outros componentes causam efeitos nesses estados
+
+Arquitetura :
+
+- Flux 
+
+exemplo spotify:
+
+Playlist -> 
+    Action -> 
+        { 
+            type: "ADD_TO_ PLAYER" 
+            Playlist: { ... } 
+        }
+                -> Redux Store (Player, User)
+-> Player (retornando o estado desejado)
+
+
+
+
+Player : pause, musica atual, volume .. 
+User: nome do usuario, idade ..
+
+
+Redux de uma maneira mais tecnica :
+
+Redux é um controlador de estados geral para sua aplicação.
+
+Compartilhar estados entre vários componentes diferentes se torna uma coisa muito fácil quando o utilizamos. 
+O Redux é basicamente divido em 3 partes: store, reducers e actions.
+
+A store
+
+"store" é o nome dado pelo Facebook para o conjunto de estados da sua aplicação. 
+Vamos pensar na store como um grande centro de informações, que possui disponibilidade para receber e entregar exatamente o que o seu componente requisita 
+(seja uma função, ou uma informação propriamente dita). A store é um objeto JavaScript que possui todos os estados dos seus componentes.
+
+Os reducers
+
+Cada dado da store deve ter o seu próprio reducer, por exemplo: o dado "user" teria o seu reducer, chamado  só para User. 
+Um reducer é encarregado de lidar com todas as ações, como algum componente pedindo para alterar algum dado da store.
+
