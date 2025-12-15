@@ -10,13 +10,13 @@ export function Home() {
 
   console.log(user);
 
-  function handleDeleteAddress(){
+  function handleDeleteAddress() {
     alert("Endereço deletado com sucesso!")
   }
 
   return (
     <>
-    <Header/>
+      <Header />
       <div className={styles.container}>
         <nav className={styles.nav}>
           <Link to="/" className={styles.link}>
@@ -39,12 +39,27 @@ export function Home() {
             <span>{user ? user.email : "Nenhum e-mail registrado"}</span>
 
 
-            <strong className={styles.addressLabel}>Endereço atual:</strong>
-            <div className={styles.address}>
-              <p>Rua centro, n 123</p>
-              
-              <button onClick={handleDeleteAddress}>Deletar endereço</button>
-            </div>
+            {user && user.address ? (
+              <div className={styles.address}>
+                <h2>Seu endereço:</h2>
+                <span>{user.address}</span>
+                <button
+                  className={styles.deleteButton}
+                  onClick={handleDeleteAddress}
+                >
+                  Deletar endereço
+                </button>
+              </div>
+            ) : (
+              <div className={styles.noAddress}>
+                <h2>Você não possui um endereço cadastrado.</h2>
+                <Link to="/address" className={styles.addButton}>
+                  Adicionar endereço
+                </Link>
+              </div>
+            )
+            }
+
 
           </div>
 
