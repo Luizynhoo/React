@@ -21,6 +21,28 @@
 
 .address{
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 14px; 
+
+  h2{
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  span{
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  button{
+    margin-top: 8px;
+    border: 0;
+    border-radius: 4px;
+    color: #D60E0E;
+    background-color: transparent;
+    font-weight: bold;
+  }
 }
 
 .addressLabel{

@@ -42,7 +42,9 @@ export function Home() {
             {user && user.address ? (
               <div className={styles.address}>
                 <h2>Seu endereço:</h2>
-                <span>{user.address}</span>
+                <span>
+                  {user.address.location}, nº {user.address.number}
+                </span>
                 <button
                   className={styles.deleteButton}
                   onClick={handleDeleteAddress}
