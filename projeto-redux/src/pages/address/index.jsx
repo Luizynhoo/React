@@ -4,7 +4,7 @@ import { Header } from '../../components/header'
 import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { addAddress } from '../../redux/user/slice'
+import { addAddress, deleteAddress } from '../../redux/user/slice'
 
 export function Address() {
   const dispatch = useDispatch()
@@ -19,6 +19,13 @@ export function Address() {
       location: addressName,
       number: addressNumber,
     }))
+  }
+
+  function handleDeleteAddress() {
+    dispatch(deleteAddress());
+    setAddressName("")
+    setAddressNumber("")
+    alert("Endereço deletado com sucesso!")
   }
 
   return (
@@ -51,9 +58,15 @@ export function Address() {
               onChange={(e) => setAddressNumber(e.target.value)}
             />
 
-            <button className={styles.button} onClick={handleRegisterAddress}>
+            <button className={styles.buttonAdd} onClick={handleRegisterAddress}>
               Salvar Alteração
             </button>
+
+            {user && user?.address && (
+              <button className={styles.buttonDelete} onClick={handleDeleteAddress}>
+                Deletar Endereço
+              </button>
+            )}
 
           </section>
         </main>

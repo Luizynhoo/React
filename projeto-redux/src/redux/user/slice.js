@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   error: null,
+  users: null,
 };
 
 export const userSlice = createSlice({
@@ -66,8 +67,24 @@ export const userSlice = createSlice({
         },
       };
     },
+
+    // ação para deletar endereço
+    deleteAddress: (state) => {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          address: null,
+        },
+      };
+    },
+
+    // ação para buscar usuários
+    fetchUsers: (state) => {
+      console.log("Buscando usuários...");
+    }
   },
 });
 
-export const { createUser, logoutUser, addAddress } = userSlice.actions;
+export const { createUser, logoutUser, addAddress, deleteAddress, fetchUsers } = userSlice.actions;
 export default userSlice.reducer;

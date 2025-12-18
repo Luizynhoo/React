@@ -1,0 +1,20 @@
+.title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    span{
+        color: #9A5EFA;
+    }
+}
+
+.fetchButton{
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #9A5EFA;
+    color: white;
+    font-weight: bold;
+    border: none;
+}

@@ -2,15 +2,18 @@ import styles from './home.module.css'
 import { Header } from '../../components/header'
 import { Link } from 'react-router-dom'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteAddress } from '../../redux/user/slice'
+
+import Lista from '../../components/Lista'
 
 export function Home() {
 
   const { user } = useSelector((rootReducer) => rootReducer.user)
-
-  console.log(user);
+  const dispatch = useDispatch()
 
   function handleDeleteAddress() {
+    dispatch(deleteAddress());
     alert("Endereço deletado com sucesso!")
   }
 
@@ -62,6 +65,9 @@ export function Home() {
             )
             }
 
+            <div className={styles.lista}>
+              <Lista />
+            </div>
 
           </div>
 
