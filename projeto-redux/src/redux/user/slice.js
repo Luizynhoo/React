@@ -1,11 +1,13 @@
 //configurando o slice do usuário
 
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 const initialState = {
   user: null,
   error: null,
-  users: null,
+  users: [],
+  loading: false,
 };
 
 export const userSlice = createSlice({
@@ -81,10 +83,44 @@ export const userSlice = createSlice({
 
     // ação para buscar usuários
     fetchUsers: (state) => {
-      console.log("Buscando usuários...");
-    }
+      state.loading = true;
+      state.error = null;
+    },
+
+    fetchUsersSuccess: (state, action) => {
+      state.users = action.payload;
+      state.loading = false;
+      state.error = null;
+    },
+
+    fetchUsersFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload || "Erro ao buscar usuários";
+    },
+
+    fetchUsersById: (state, action) => {
+      console.log("Ação para buscar usuário por ID");
+    },
+
+    fetchUsersByIdSuccess: (state, action) => {
+      console.log("Sucesso ao buscar usuário por ID");
+      console.log(action.payload);
+    },
+
+    fetchUsersByIdFail: (state, action) => {
+      console.log("Falha ao buscar usuário por ID");
+    },
   },
 });
 
-export const { createUser, logoutUser, addAddress, deleteAddress, fetchUsers } = userSlice.actions;
+export const {
+  createUser,
+  logoutUser,
+  addAddress,
+  deleteAddress,
+  fetchUsers,
+  fetchUsersSuccess,
+  fetchUsersFail,
+  fetchUsersById,
+} = userSlice.actions;
 export default userSlice.reducer;

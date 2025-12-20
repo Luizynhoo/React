@@ -1,14 +1,14 @@
-.title{
+.title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
 
-    span{
+    span {
         color: #9A5EFA;
     }
 }
 
-.fetchButton{
+.fetchButton {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
@@ -17,4 +17,68 @@
     color: white;
     font-weight: bold;
     border: none;
+}
+
+.table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #9A5EFA;
+    color: #fff;
+}
+
+.table td:nth-child(1) {
+    background-color: #9A5EFA;
+    color: #fff;
+}
+
+.table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.searchArea {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin: 20px;
+
+}
+
+.searchById {
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchInput {
+    width: 120px;
+    padding: 8px 12px;
+    font-size: 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.searchInput:focus {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
 }
